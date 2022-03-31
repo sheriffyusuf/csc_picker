@@ -6,6 +6,7 @@ class DropdownWithSearch<T> extends StatelessWidget {
   final T selected;
   final List items;
   final EdgeInsets? selectedItemPadding;
+  final EdgeInsets? dropdownPadding;
   final TextStyle? selectedItemStyle;
   final TextStyle? dropdownHeadingStyle;
   final TextStyle? itemStyle;
@@ -25,6 +26,7 @@ class DropdownWithSearch<T> extends StatelessWidget {
       required this.selected,
       required this.onChanged,
       this.selectedItemPadding,
+      this.dropdownPadding,
       this.selectedItemStyle,
       this.dropdownHeadingStyle,
       this.itemStyle,
@@ -65,7 +67,9 @@ class DropdownWithSearch<T> extends StatelessWidget {
           });
         },
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+          padding: dropdownPadding != null
+              ? dropdownPadding
+              : EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           decoration: !disabled
               ? decoration != null
                   ? decoration

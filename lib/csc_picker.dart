@@ -520,6 +520,7 @@ class CSCPicker extends StatefulWidget {
   const CSCPicker({
     Key? key,
     this.onCountryChanged,
+    this.dropdownPadding,
     this.onStateChanged,
     this.onCityChanged,
     this.selectedItemStyle,
@@ -566,6 +567,7 @@ class CSCPicker extends StatefulWidget {
   final double? dropdownDialogRadius;
 
   final DefaultCountry? defaultCountry;
+  final EdgeInsets? dropdownPadding;
 
   final String countrySearchPlaceholder;
   final String stateSearchPlaceholder;
@@ -727,7 +729,7 @@ class CSCPickerState extends State<CSCPicker> {
         } catch (e) {}
       } else
         this.widget.onCountryChanged!(value);
-      print('am getting here ohh');
+      //  print('am getting here ohh');
       //code added in if condition
       if (value != _selectedCountry) {
         _states.clear();
@@ -861,6 +863,7 @@ class CSCPickerState extends State<CSCPicker> {
     return DropdownWithSearch(
       title: widget.countryDropdownLabel,
       placeHolder: widget.countrySearchPlaceholder,
+      dropdownPadding: widget.dropdownPadding,
       selectedItemStyle: widget.selectedItemStyle,
       dropdownHeadingStyle: widget.dropdownHeadingStyle,
       itemStyle: widget.dropdownItemStyle,
@@ -892,6 +895,7 @@ class CSCPickerState extends State<CSCPicker> {
     return DropdownWithSearch(
       title: widget.stateDropdownLabel,
       placeHolder: widget.stateSearchPlaceholder,
+      dropdownPadding: widget.dropdownPadding,
       disabled: _states.length == 0 ? true : false,
       items: _states.map((String? dropDownStringItem) {
         return dropDownStringItem;
@@ -919,6 +923,7 @@ class CSCPickerState extends State<CSCPicker> {
   Widget cityDropdown() {
     return DropdownWithSearch(
       title: widget.cityDropdownLabel,
+      dropdownPadding: widget.dropdownPadding,
       placeHolder: widget.citySearchPlaceholder,
       disabled: _cities.length == 0 ? true : false,
       items: _cities.map((String? dropDownStringItem) {
@@ -931,6 +936,7 @@ class CSCPickerState extends State<CSCPicker> {
       dialogRadius: widget.dropdownDialogRadius,
       searchBarRadius: widget.searchBarRadius,
       disabledDecoration: widget.disabledDropdownDecoration,
+
       selected: _selectedCity,
       label: widget.citySearchPlaceholder,
       //onChanged: (value) => _onSelectedCity(value),
