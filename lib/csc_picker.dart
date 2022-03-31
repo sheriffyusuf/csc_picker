@@ -1,9 +1,11 @@
 library csc_picker;
 
-import 'package:csc_picker/dropdown_with_search.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
+
+import 'package:csc_picker/dropdown_with_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+
 import 'model/select_status_model.dart';
 
 enum Layout { vertical, horizontal }
@@ -639,7 +641,7 @@ class CSCPickerState extends State<CSCPicker> {
         widget.flagState == CountryFlag.ENABLE ||
                 widget.flagState == CountryFlag.SHOW_IN_DROP_DOWN_ONLY
             ? _country.add(model.emoji! +
-                "    " +
+                "  " +
                 model.name!) /* : _country.add(model.name)*/
             : _country.add(model.name);
       });
@@ -657,8 +659,7 @@ class CSCPickerState extends State<CSCPicker> {
             widget.flagState == CountryFlag.SHOW_IN_DROP_DOWN_ONLY
         ? response
             .map((map) => Country.fromJson(map))
-            .where(
-                (item) => item.emoji + "    " + item.name == _selectedCountry)
+            .where((item) => item.emoji + "  " + item.name == _selectedCountry)
             .map((item) => item.state)
             .toList()
         : response
@@ -689,8 +690,7 @@ class CSCPickerState extends State<CSCPicker> {
             widget.flagState == CountryFlag.SHOW_IN_DROP_DOWN_ONLY
         ? response
             .map((map) => Country.fromJson(map))
-            .where(
-                (item) => item.emoji + "    " + item.name == _selectedCountry)
+            .where((item) => item.emoji + " " + item.name == _selectedCountry)
             .map((item) => item.state)
             .toList()
         : response
@@ -727,6 +727,7 @@ class CSCPickerState extends State<CSCPicker> {
         } catch (e) {}
       } else
         this.widget.onCountryChanged!(value);
+      print('am getting here ohh');
       //code added in if condition
       if (value != _selectedCountry) {
         _states.clear();
@@ -782,13 +783,15 @@ class CSCPickerState extends State<CSCPicker> {
                 children: <Widget>[
                   countryDropdown(),
                   SizedBox(
-                    height: 10.0,
+                    height: 16.0,
                   ),
                   stateDropdown(),
                   SizedBox(
-                    height: 10.0,
+                    height: 16.0,
                   ),
-                  cityDropdown()
+                  widget.showStates && widget.showCities
+                      ? cityDropdown()
+                      : Container()
                 ],
               )
             : Column(
