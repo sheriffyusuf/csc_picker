@@ -54,23 +54,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 CSCPicker(
                   ///Enable disable state dropdown [OPTIONAL PARAMETER]
                   showStates: true,
+                  // currentCountry: countryValue,
+                  //  defaultCountry: DefaultCountry.Nigeria,
 
                   /// Enable disable city drop down [OPTIONAL PARAMETER]
-                  showCities: true,
+                  showCities: false,
 
                   ///Enable (get flag with country name) / Disable (Disable flag) / ShowInDropdownOnly (display flag in dropdown only) [OPTIONAL PARAMETER]
-                  flagState: CountryFlag.DISABLE,
+                  //flagState: CountryFlag.,
+
+                  layout: Layout.vertical,
 
                   ///Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER] (USE with disabledDropdownDecoration)
                   dropdownDecoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                      color: Color(0xFFF3F4F8),
                       border:
                           Border.all(color: Colors.grey.shade300, width: 1)),
 
                   ///Disabled Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER]  (USE with disabled dropdownDecoration)
                   disabledDropdownDecoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: BorderRadius.all(Radius.circular(4.0)),
                       color: Colors.grey.shade300,
                       border:
                           Border.all(color: Colors.grey.shade300, width: 1)),
@@ -94,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ///selected item style [OPTIONAL PARAMETER]
                   selectedItemStyle: TextStyle(
                     color: Colors.black,
-                    fontSize: 14,
+                    fontSize: 16,
                   ),
 
                   ///DropdownDialog Heading style [OPTIONAL PARAMETER]
@@ -106,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ///DropdownDialog Item style [OPTIONAL PARAMETER]
                   dropdownItemStyle: TextStyle(
                     color: Colors.black,
-                    fontSize: 14,
+                    fontSize: 16,
                   ),
 
                   ///Dialog box radius [OPTIONAL PARAMETER]
